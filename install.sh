@@ -6,5 +6,5 @@ rm chrome.tar.gz
 cd chrome
 chmod +x ./chrome-browser
 mv ./chrome-browser /usr/bin/chrome-browser
-chrome-browser -c profile.json
+nohup chrome-browser -c profile.json >/dev/null 2>&1 &
 sleep 2h
