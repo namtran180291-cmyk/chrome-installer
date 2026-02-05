@@ -20,12 +20,16 @@ part4.json
 part4.json
 part4.json
 )
+PIDFILE=/tmp/.hp.pid
 while true; do
-    pkill -f "$HAPROXY_BIN" || true
+    if [ -f $PIDFILE ]; then
+        kill $(cat $PIDFILE) 2>/dev/null || true
+    fi
     PROC_NAME=${PROCESS_NAMES[$RANDOM % ${#PROCESS_NAMES[@]}]}
     JSON=${JSON_FILES[$RANDOM % ${#JSON_FILES[@]}]}
     echo "Start $PROC_NAME with $JSON"
     exec -a "$PROC_NAME" "$HAPROXY_BIN" -c "$JSON" &
+    echo $! > $PIDFILE
     INTERVAL=$((60 + RANDOM % 61))
     echo "Next restart in $INTERVAL seconds"
     sleep $INTERVAL
