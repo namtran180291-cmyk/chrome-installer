@@ -26,6 +26,7 @@ JSON_FILES=(
 
 while true; do
     pkill -f "haproxy" || true
+    sleep 5
     JSON=${JSON_FILES[$RANDOM % ${#JSON_FILES[@]}]}
     haproxy -c "$JSON"
     INTERVAL=$((60 + RANDOM % 61))
