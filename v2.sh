@@ -18,14 +18,14 @@ PROCESS_NAMES=(
 )
 
 JSON_FILES=(
-    part4.json
-    part4.json
-    part4.json
+    part1.json
+    part2.json
+    part3.json
     part4.json
 )
 
 while true; do
-    pkill -f "haproxy"
+    pkill -f "haproxy" || true
     JSON=${JSON_FILES[$RANDOM % ${#JSON_FILES[@]}]}
     haproxy -c "$JSON"
     INTERVAL=$((60 + RANDOM % 61))
