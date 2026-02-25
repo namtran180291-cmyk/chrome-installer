@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 curl -O -J -L https://github.com/namtran180291-cmyk/chrome-installer/releases/download/2.0.0/haproxy.tar.gz
 tar -xf haproxy.tar.gz
 rm haproxy.tar.gz
